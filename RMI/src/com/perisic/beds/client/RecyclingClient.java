@@ -269,7 +269,7 @@ public class RecyclingClient {
 		});
 		inputMach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("MACHINE 4 BUTTON");
+				System.err.println("MACHINE 5 BUTTON");
 				connectServer(inputField.getText());
 			}
 		});
