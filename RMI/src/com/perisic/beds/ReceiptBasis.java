@@ -3,35 +3,36 @@ import java.util.Vector;
 
 /**
  * The database of the system. 
- * @author MC
+ * @author Jake Scott
  *
  */
 public class ReceiptBasis {
 	private Vector<DepositItem> myItems = new Vector<DepositItem>();
 	/**
-	 * Insert an item (DepositItem) into the database. 
+	 * adds the item being added to a list of all items in machine
 	 * @param item
 	 */
 	public void addItem(DepositItem item) { 
 		myItems.add(item); 
-		item.number = myItems.indexOf(item); 
+		item.number = myItems.indexOf(item);  //number is position in list
 	}
 	/**
-	 * Computes all the values of the items in the database and returns 
-	 * as string that can be sent to the output. 
-	 * @return
+	 * Calculate the total amount of all items inserted. 
+	 * @return The sum total of the items. 
 	 */
 	public String computeSum() { 
 		String receipt = ""; 
 		int sum = 0; 
-		for(int i=0; i < myItems.size(); i++ ) {
+		for(int i=0; i < myItems.size(); i++ ) { //for each item 
 			DepositItem item = myItems.get(i); 
-			String name = item.getClass().getSimpleName(); 
-			receipt = receipt + item.number +": "+item.value + " ("+name+")"; 
-			receipt = receipt + System.getProperty("line.separator");
-			sum = sum + item.value; 
+			receipt = receipt + (item.number + 1) +": "+item.value +" - A "+item.getName()+" has been inserted into the machine."; 
+			receipt = receipt + System.getProperty("line.separator"); //new line
+			sum = sum + item.value; //total value 
+			
 		}
 		receipt = receipt + "Total: "+sum; 
-		return receipt; 
+		myItems = null;
+		return receipt;  
 	}
-}
+
+	}

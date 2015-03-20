@@ -1,58 +1,49 @@
 package com.perisic.beds;
 
 /**
- * This class interfaces with the customer - the person who adds items into the machine 
- * and requests a receipt after that. 
- * @author MC
+ * User Interface. It interacts only with the Deposit Item Received; doens't know about anything
+ * else. 
+ * @author Jake Scott
  *
  */
 public class CustomerPanel {
 	
-	
-	DepositItemReceiver receiver = null;  
-	
-	/** 
-	 * Returns all items in the machine
-	 * @return all items in the machine. 
-	 */
-	/**
-	 * Returns the total number of items in the machine since its existence.
-	 * If the machine is emptied, please restart this software to reset.
-	 * @return number of items entered into the machine. 
-	 */
-	
-	int getTotalNumberOfItems() { 
-		return receiver.getTotalNumberOfItems(); 
-	}
+	DepositItemReceiver receiver = null;
 	
 	
-	/**
-	 * Constructor for the CustomerPanel to be configured with the printer
-	 * @param printer
-	 */
-	public CustomerPanel(PrinterInterface printer) {
+	public CustomerPanel(PrintInterface myPrinter) {
 		super();
-		receiver = new DepositItemReceiver(printer); 
+		this.receiver = new DepositItemReceiver(myPrinter); 
 	}
 	/**
-	 * Whenever an item is inserted into a certain slot this method is called.
+	 * An item is entered into the recycling machine.
 	 * @param slot
 	 */
 	public void itemReceived(int slot) { 
 		receiver.classifyItem(slot); 
 	}
 	/**
-	 * Whenever an item is inserted it is measured and the parameters of
-	 * size and weight are passed on to the system. 
-	 * @param slot
-	 */
-	public void itemReceived(int mySize, int myWeight) { 
-		receiver.classifyItem(mySize, myWeight); 
-	}
-	/**
-	 * When the receipt is requested. 
+	 * A request is made for a receipt. 
 	 */
 	public void printReceipt() { 
 		receiver.printReceipt();
+	}
+	/**
+	 * A request is made for a summary.
+	 */
+	public void printSummary() {
+		receiver.printSummary();
+	}
+	public void changeColour(String c) {
+		receiver.changeColour(c);
+	}
+	public int getNumberOfItems() { 
+		return receiver.getNumberOfItems(); 
+	}
+	public String getSummaryText() { 
+		return receiver.getSummaryText(); 
+	}
+	public String getReceiptText() { 
+		return receiver.getReceiptText(); 
 	}
 }

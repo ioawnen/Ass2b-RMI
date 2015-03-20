@@ -1,17 +1,23 @@
 package com.perisic.beds;
 
 /**
- * Represents a crate
- * @author MC
+ * Represents a crate object
+ * @author Jake Scott
  *
  */
 public class Crate extends DepositItem {
-	static int weight = 120; 
-	static int size = 80; 
+	static int weight = 220; 
+	static int size = 90; 
 	/**
-	 * Initialized by the value of the crate
+	 * 
 	 */
 	public Crate() { 
-		value = 200; 
+		value = 41; 
+	}
+	/**
+	 * Returns the name of the object
+	 */
+	String getName() { 
+		return "crate";
 	}
 }

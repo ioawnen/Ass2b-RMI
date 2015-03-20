@@ -1,17 +1,22 @@
 package com.perisic.beds;
 
+
+
 /**
- * Default output device of the Recycling machine. Prints to System.out.
- * @author MC
+ * Provides the output to the customer. 
+ * @author Marc Conrad
  *
  */
-
-public class ReceiptPrinter implements PrinterInterface {
+public class ReceiptPrinter implements PrintInterface {
 	/**
-	 * Prints str to System.out
+	 * The passed in string is printed to the screen
 	 * @param str
 	 */
 	public void print(String str) { 
 		System.out.println(str);
+	}
+	
+	public void changeColour(String c){
+		
 	}
 }

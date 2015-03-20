@@ -62,7 +62,7 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 			if( myCustomerPanel == null ) { 
 				return -4; 
 			} else { 
-				return myCustomerPanel.getTotalNumberOfItems();
+				return myCustomerPanel.getNumberOfItems();
 			}
 		} else { 
 			return -3; 

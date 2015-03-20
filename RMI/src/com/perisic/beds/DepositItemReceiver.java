@@ -1,97 +1,105 @@
 package com.perisic.beds;
 
 /**
- * The controller class the represents the overall system. Responsible for 
- * classifying the items added into the recycling machine and printing the
- * receipt.
- * @author MC
+ * Represents the overall system. In fact it controls the working of the Recycling Machine. 
+ * Central Logic (and so on). 
+ * @author Jake Scott
  *
  */
 public class DepositItemReceiver {
-	/**
-	 * Constructor for the Deposit item receiver that takes a configurable printer.
-	 * @param printer
-	 */
-	public DepositItemReceiver(PrinterInterface printer) {
+	ReceiptBasis theReceiptBasis = null; 
+	Summary summ = null;
+	PrintInterface printer = null; 
+	int capacity = 15; //The current capacity of the machine is 15 items
+	int i = 0; //current no of items
+	
+
+	DepositItemReceiver(PrintInterface printer) {
 		super();
 		this.printer = printer;
 	}
-	
-	int totalNumberOfItems = 0; 
-	ReceiptBasis theReceiptBasis = null; 
-	PrinterInterface printer = null; 
-	
 	/**
-	 * All items inserted into the machine since it starts to exist. 
-	 * @return items in the machine. 
+	 * Initialises the receipt, with a list of items added.
 	 */
-	int getTotalNumberOfItems() {
-		return totalNumberOfItems; 
-	}
-	/**
-	 * Creates the database where all items are stored. 
-	 */
-	
 	public void createReceiptBasis() { 
 		theReceiptBasis = new ReceiptBasis(); 
 	}
 	/**
-	 * Checks in which item a slot has been inserted and then
-	 * adds the relevant item into the database. 
+	 * Initialises a summary
+	 */
+	public void createSummary() {
+		summ = new Summary();
+	}
+	/**
+	 * Receives the slot where an item has been inserted and then adds 
+	 * the respective item to the database. 
 	 * @param slot
 	 */
-	public void classifyItem(int slot) { 
+	public void classifyItem(int slot) {; 
 		DepositItem item = null; 
-		if( slot == 1 ) { 
+		if( slot == 1 ) {    //Creates an item object for the respective item
 			item = new Can(); 
 		} else if( slot == 2 ) { 
 			item = new Bottle(); 
 		} else if ( slot == 3 ) { 
 			item = new Crate(); 
-		} else if (slot ==4 ) { 
-			item = new Bag(); 
+		} else if (slot == 4) { 
+			item = new PaperBag(); 
 		}
-		if( theReceiptBasis == null ) { 
-			createReceiptBasis(); 
+		
+		if( theReceiptBasis == null ) { //If there is currently no receipt, one is created
+			createReceiptBasis();
 		}
-		theReceiptBasis.addItem(item); 
-		totalNumberOfItems = totalNumberOfItems + 1; 
-	}
-	
-	/**
-	 * @param mySize The size of the item entered into the machine.
-	 * @param myWeight The weight of the item entered into the machine.
-	 */
-	public void classifyItem(int mySize, int myWeight) { 
-		DepositItem item = null; 
-		if( mySize == Can.size && myWeight == Can.weight) { 
-			item = new Can(); 
-		} else if( mySize == Bottle.size && myWeight == Bottle.weight ) { 
-			item = new Bottle(); 
-		} else if ( mySize == Crate.size && myWeight == Crate.weight ) { 
-			item = new Crate(); 
-		} else if ( mySize == Bag.size && myWeight == Bag.weight ) { 
-			item = new Bag(); 
+		if( summ == null ) {  //If there is currently no summary, one is created
+			createSummary();
 		}
-		if( theReceiptBasis == null ) { 
-			createReceiptBasis(); 
+		if ((summ.totalI < capacity)){  //if there is room left
+			theReceiptBasis.addItem(item); //added to summary and receipt
+			summ.addItem(item);
+			i++;
+		} else {  //if machine is full
+			String str = "The machine cannot hold any more items";
+			printer.print(str);; //output
 		}
-		if( item != null ) {
-			theReceiptBasis.addItem(item); 
-		} else { 
-			printer.print("Item not recognized: size="+mySize+", weight="+myWeight); 
-		}
+		
 	}
 	/**
-	 * Send a print request to the output device. 
+	 * Provides an output when a request for a receipt is made.
 	 */
 	public void printReceipt() { 
-		if( theReceiptBasis == null ) { 
-			printer.print("No item in the machine");
-		} else { 
-			String str = theReceiptBasis.computeSum(); 
-			printer.print(str); 
-			theReceiptBasis = null; 
+		if(theReceiptBasis==null){  //If receipt is empty
+			printer.print("You have not added anything to the machine.");
+		} else {
+		String str = theReceiptBasis.computeSum(); //Receipt is constructed
+		printer.print(str); //output
+		theReceiptBasis = null; //Receipt cleared
 		}
 	}
-}
+	/**
+	 * Provides an output when a request for a summary is made.
+	 */
+	public void printSummary() {
+		if(summ==null){  //If summary is empty
+			printer.print("There is nothing inside the machine.");
+		} else {
+		String str = summ.summary();  //Summary is constructed
+		printer.print(str);  //output
+		}
+	}
+	/**
+	 * When request to change text text colour is made, passes colour via the Print Interface
+	 * @param c
+	 */
+	public void changeColour(String c) {
+		printer.changeColour(c); //c is the colour (Passes from RecyclingGUI)
+	}
+	public int getNumberOfItems() {
+		return i;
+	}
+	public String getSummaryText() {
+		return summ.summary();
+	}
+	public String getReceiptText() {
+		return theReceiptBasis.computeSum();
+	}
+	}

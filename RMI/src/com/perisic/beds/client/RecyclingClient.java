@@ -320,8 +320,8 @@ public class RecyclingClient {
 	 */
 
 	public static void main (String [] args) {
-		//machineSelect();
-		startGUI("HA"); //For debug only!
+		machineSelect();
+		//startGUI("HA"); //For debug only!
 	}
 }
 

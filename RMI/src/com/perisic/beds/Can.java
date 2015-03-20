@@ -1,17 +1,23 @@
 package com.perisic.beds;
 
 /**
- * Represents a Can of the system. 
- * @author MC
+ * Represents a can to be inserted into the machine. 
+ * @author Jake Scott
  *
  */
 public class Can extends DepositItem {
-	static int weight = 5; 
-	static int size = 6; 
+	static int weight = 4; 
+	static int size = 5; 
 	/**
-	 * Initialized with the value of a can. 
+	 * 
 	 */
 	public Can() { 
-		value = 20; 
+		value = 13; 
+	}
+	/**
+	 * Returns the name of the object
+	 */
+	String getName() { 
+		return "can";
 	}
 }
