@@ -89,37 +89,30 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
  */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(slot1)) {  //if slot 1 is pressed, a can is added to the machine
-			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){ //if the machine is not full
+			
 			myCustomerPanel.itemReceived(1);
-			status.setText("Can Inserted. " + getSpaceRemaining() + " spaces remaining.");
-			} else
-			{
-				status.setText("The machine is full");
-			}
+			if(getSpaceRemaining()==1) { status.setText("Can Inserted. " + getSpaceRemaining() + " space remaining."); }
+			else if (getSpaceRemaining()!=0) { status.setText("Can Inserted. " + getSpaceRemaining() + " spaces remaining."); }
+			else { status.setText("The machine is full"); }
+			
 		} else if (e.getSource().equals(slot2)) {
-			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){
 			myCustomerPanel.itemReceived(2);
-			status.setText("Bottle Inserted. " + getSpaceRemaining() + " spaces remaining.");
-			} else
-			{
-				status.setText("The machine is full");
-			}
+			if(getSpaceRemaining()==1) { status.setText("Bottle Inserted. " + getSpaceRemaining() + " space remaining."); }
+			else if (getSpaceRemaining()!=0) { status.setText("Bottle Inserted. " + getSpaceRemaining() + " spaces remaining."); }
+			else { status.setText("The machine is full"); }
+			
 		} else if (e.getSource().equals(slot3)) {
-			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){
 			myCustomerPanel.itemReceived(3);
-			status.setText("Crate Inserted. " + getSpaceRemaining() + " spaces remaining.");
-			} else
-			{
-				status.setText("The machine is full");
-			}
+			if(getSpaceRemaining()==1) { status.setText("Crate Inserted. " + getSpaceRemaining() + " space remaining."); }
+			else if (getSpaceRemaining()!=0) { status.setText("Crate Inserted. " + getSpaceRemaining() + " spaces remaining."); }
+			else { status.setText("The machine is full"); }
+			
 		} else if (e.getSource().equals(slot4)) {
-			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){
 			myCustomerPanel.itemReceived(4);
-			status.setText("Paper Bag Inserted. " + getSpaceRemaining() + " spaces remaining.");
-			} else
-			{
-				status.setText("The machine is full");
-			}
+			if(getSpaceRemaining()==1) { status.setText("Paper Bag Inserted. " + getSpaceRemaining() + " space remaining."); }
+			else if (getSpaceRemaining()!=0) { status.setText("Paper Bag Inserted. " + getSpaceRemaining() + " spaces remaining."); }
+			else { status.setText("The machine is full"); }
+			
 		} else if (e.getSource().equals(receipt)) { //receipt is output when this button is pressed
 			status.setText("");
 		myCustomerPanel.printReceipt(); //prints the receipt
