@@ -3,6 +3,7 @@ package com.perisic.beds.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 import com.perisic.beds.RecyclingRMI;
 /**
@@ -116,7 +118,7 @@ public class RecyclingClient {
 		JButton slot4 = new JButton ("Test Slot 4");
 		JButton logout = new JButton("Logout"); 
 		
-		final JTextField outputField = new JTextField(10);
+		final JTextArea outputField = new JTextArea();
 		outputField.setEditable(false); 
 		
 		
@@ -227,6 +229,7 @@ public class RecyclingClient {
 		
 		//Layout
 		JPanel jplContentPane = new JPanel(new GridBagLayout());
+		jplContentPane.setPreferredSize(new Dimension(700, 250));
 		jplContentPane.setBorder(BorderFactory.createEmptyBorder(20, 20,
 				20, 20));
 		
@@ -246,8 +249,7 @@ public class RecyclingClient {
 		jplContentPane.add(summary, c);
 		c.gridy = 3;
 		jplContentPane.add(feedback, c);
-		c.gridy = 4;
-		jplContentPane.add(outputField, c); 
+
 		c.gridx = 1;
 		c.gridy = 0;
 		jplContentPane.add(slot1, c);
@@ -259,6 +261,16 @@ public class RecyclingClient {
 		jplContentPane.add(slot4, c);
 		c.gridy = 4;
 		jplContentPane.add(logout, c);
+		
+		c.gridx = 2;
+		c.gridy = 0;
+		c.gridwidth = 0;
+		c.gridheight = 5;
+		c.weighty = 1;
+		outputField.setLineWrap(true);
+		outputField.setWrapStyleWord(true);
+		c.fill = GridBagConstraints.BOTH;
+		jplContentPane.add(outputField, c); 
 		
 		frame.setContentPane(jplContentPane);
 
