@@ -149,6 +149,14 @@ public class RecyclingClient {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("FEEDBACK BUTTON");
 				//DO THINGS HERE
+				try { 
+					String result = ""+rc.getFeedback(sessionCookie); 
+					System.out.println("The result is: "+result ); 					
+					outputField.setText(result); 
+
+				} catch (Exception exception) {
+					System.err.println("JavaClient: " + exception);
+				}
 			}
 		});
 		slot1.addActionListener(new ActionListener() {

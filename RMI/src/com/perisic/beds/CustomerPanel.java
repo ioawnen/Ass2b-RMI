@@ -9,6 +9,7 @@ package com.perisic.beds;
 public class CustomerPanel {
 	
 	DepositItemReceiver receiver = null;
+	String feedback = null;
 	
 	
 	public CustomerPanel(PrintInterface myPrinter) {
@@ -48,5 +49,11 @@ public class CustomerPanel {
 	}
 	public String getReceiptText() { 
 		return receiver.getReceiptText(); 
+	}
+	public String getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 }

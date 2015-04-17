@@ -83,4 +83,7 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 			return -3;
 		}
 	}
+	public String getFeedback(String sessionCookie) {
+		return myCustomerPanel.getFeedback();
+	}
 }

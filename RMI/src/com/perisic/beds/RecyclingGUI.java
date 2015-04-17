@@ -129,7 +129,10 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 		    // open prompt for feedback
 		    String input = JOptionPane.showInputDialog(frame, "Leave Feedback");
 
-		    if(input!=null){ feedbackList.add(input); }
+		    if(input!=null){ 
+		    	feedbackList.add(input); 
+		    	myCustomerPanel.setFeedback(input);
+		    }
 		}
 	}
 	
