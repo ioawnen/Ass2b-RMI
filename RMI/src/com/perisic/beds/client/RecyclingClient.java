@@ -180,28 +180,28 @@ public class RecyclingClient {
 		slot1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("SLOT 1 BUTTON");
-				outputField.setText(emulateButtonPress(sessionCookie, 1));
+				emulateButtonPress(sessionCookie, 1);
 			}
 		});
 		slot2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("SLOT 2 BUTTON");
 				//DO THINGS HERE
-				outputField.setText(emulateButtonPress(sessionCookie, 2));
+				emulateButtonPress(sessionCookie, 2);
 			}
 		});
 		slot3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("SLOT 3 BUTTON");
 				//DO THINGS HERE
-				outputField.setText(emulateButtonPress(sessionCookie, 3));
+				emulateButtonPress(sessionCookie, 3);
 			}
 		});
 		slot4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("SLOT 4 BUTTON");
 				//DO THINGS HERE
-				outputField.setText(emulateButtonPress(sessionCookie, 4));
+				emulateButtonPress(sessionCookie, 4);
 			}
 		});
 		logout.addActionListener(new ActionListener() {
