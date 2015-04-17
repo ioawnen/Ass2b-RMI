@@ -101,7 +101,12 @@ public class DepositItemReceiver {
 		return capacity;
 	}
 	public String getSummaryText() {
-		return summ.summary();
+		if(summ==null){  //If receipt is empty
+			return "You have not added anything to the machine.";
+		} 
+		else {
+			return summ.summary();
+		}
 	}
 	public String getReceiptText() {
 		if(theReceiptBasis==null){  //If receipt is empty

@@ -137,7 +137,7 @@ public class RecyclingClient {
 		});
 		receipt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("RECEIPT BUTTON");
+				//System.err.println("RECEIPT BUTTON");
 				//DO THINGS HERE
 				try { 
 					String result = ""+rc.getReceipt(sessionCookie); 
@@ -151,7 +151,7 @@ public class RecyclingClient {
 		});
 		summary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("SUMMARY BUTTON");
+				//System.err.println("SUMMARY BUTTON");
 				//DO THINGS HERE
 				try { 
 					String result = ""+rc.getSummary(sessionCookie); 
@@ -165,7 +165,7 @@ public class RecyclingClient {
 		});
 		feedback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("FEEDBACK BUTTON");
+				//System.err.println("FEEDBACK BUTTON");
 				//DO THINGS HERE
 				try { 
 					String result = ""+rc.getFeedback(sessionCookie); 
@@ -179,34 +179,34 @@ public class RecyclingClient {
 		});
 		slot1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("SLOT 1 BUTTON");
+				//System.err.println("SLOT 1 BUTTON");
 				outputField.setText(emulateButtonPress(sessionCookie, 1));
 			}
 		});
 		slot2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("SLOT 2 BUTTON");
+				//System.err.println("SLOT 2 BUTTON");
 				//DO THINGS HERE
 				outputField.setText(emulateButtonPress(sessionCookie, 2));
 			}
 		});
 		slot3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("SLOT 3 BUTTON");
+				//System.err.println("SLOT 3 BUTTON");
 				//DO THINGS HERE
 				outputField.setText(emulateButtonPress(sessionCookie, 3));
 			}
 		});
 		slot4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("SLOT 4 BUTTON");
+				//System.err.println("SLOT 4 BUTTON");
 				//DO THINGS HERE
 				outputField.setText(emulateButtonPress(sessionCookie, 4));
 			}
 		});
 		logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("LOGOUT BUTTON");
+				//System.err.println("LOGOUT BUTTON");
 				//DO THINGS HERE
 				String result = "-2";
 				try { 
@@ -313,31 +313,31 @@ public class RecyclingClient {
 		
 		mach1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("MACHINE 1 BUTTON");
+				//System.err.println("MACHINE 1 BUTTON");
 				connectServer("rmi://localhost/RecyclingService");
 			}
 		});
 		mach2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("MACHINE 2 BUTTON");
+				//System.err.println("MACHINE 2 BUTTON");
 				connectServer("rmi://10.1.27.192/RecyclingService");
 			}
 		});
 		mach3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("MACHINE 3 BUTTON");
+				//System.err.println("MACHINE 3 BUTTON");
 				connectServer("rmi://10.1.27.146/RecyclingService");
 			}
 		});
 		mach4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("MACHINE 4 BUTTON");
+				//System.err.println("MACHINE 4 BUTTON");
 				connectServer("rmi://localhost/RecyclingService");
 			}
 		});
 		inputMach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("MACHINE 5 BUTTON");
+				//System.err.println("MACHINE 5 BUTTON");
 				connectServer(inputField.getText());
 			}
 		});
