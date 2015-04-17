@@ -181,6 +181,7 @@ public class RecyclingClient {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("SLOT 1 BUTTON");
 				emulateButtonPress(sessionCookie, 1);
+				outputField.setText("Can Added");
 			}
 		});
 		slot2.addActionListener(new ActionListener() {
@@ -188,6 +189,7 @@ public class RecyclingClient {
 				//System.err.println("SLOT 2 BUTTON");
 				//DO THINGS HERE
 				emulateButtonPress(sessionCookie, 2);
+				outputField.setText("Bottle Added");
 			}
 		});
 		slot3.addActionListener(new ActionListener() {
@@ -195,6 +197,7 @@ public class RecyclingClient {
 				//System.err.println("SLOT 3 BUTTON");
 				//DO THINGS HERE
 				emulateButtonPress(sessionCookie, 3);
+				outputField.setText("Crate Added");
 			}
 		});
 		slot4.addActionListener(new ActionListener() {
@@ -202,6 +205,7 @@ public class RecyclingClient {
 				//System.err.println("SLOT 4 BUTTON");
 				//DO THINGS HERE
 				emulateButtonPress(sessionCookie, 4);
+				outputField.setText("Paper Bag Added");
 			}
 		});
 		logout.addActionListener(new ActionListener() {
