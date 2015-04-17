@@ -11,7 +11,7 @@ public class DepositItemReceiver {
 	Summary summ = null;
 	PrintInterface printer = null; 
 	int capacity = 15; //The current capacity of the machine is 15 items
-	int i = 0; //current no of items
+	int items = 0; //current no of items
 	
 
 	DepositItemReceiver(PrintInterface printer) {
@@ -56,7 +56,7 @@ public class DepositItemReceiver {
 		if ((summ.totalI < capacity)){  //if there is room left
 			theReceiptBasis.addItem(item); //added to summary and receipt
 			summ.addItem(item);
-			i++;
+			items++;
 		} else {  //if machine is full
 			String str = "The machine cannot hold any more items";
 			printer.print(str);; //output
@@ -94,7 +94,10 @@ public class DepositItemReceiver {
 		printer.changeColour(c); //c is the colour (Passes from RecyclingGUI)
 	}
 	public int getNumberOfItems() {
-		return i;
+		return items;
+	}
+	public int getCapacity() {
+		return capacity;
 	}
 	public String getSummaryText() {
 		return summ.summary();

@@ -69,6 +69,15 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 		}
 	}
 	
+	public int getSpaceRemaining() {
+		int items = myCustomerPanel.getNumberOfItems();
+		int capacity = myCustomerPanel.getCapacity();
+		
+		int result = (items-capacity)-((items-capacity)*2);
+		
+		return result;
+	}
+	
 	
 	
 	/**
@@ -80,37 +89,33 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
  */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(slot1)) {  //if slot 1 is pressed, a can is added to the machine
-			if (capacity != 0){ //if the machine is not full
+			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){ //if the machine is not full
 			myCustomerPanel.itemReceived(1);
-			capacity--;
-			status.setText("Can Inserted. " + capacity + " spaces remaining.");
+			status.setText("Can Inserted. " + getSpaceRemaining() + " spaces remaining.");
 			} else
 			{
 				status.setText("The machine is full");
 			}
 		} else if (e.getSource().equals(slot2)) {
-			if (capacity != 0){
+			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){
 			myCustomerPanel.itemReceived(2);
-			capacity--;
-			status.setText("Bottle Inserted. " + capacity + " spaces remaining.");
+			status.setText("Bottle Inserted. " + getSpaceRemaining() + " spaces remaining.");
 			} else
 			{
 				status.setText("The machine is full");
 			}
 		} else if (e.getSource().equals(slot3)) {
-			if (capacity != 0){
+			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){
 			myCustomerPanel.itemReceived(3);
-			capacity--;
-			status.setText("Crate Inserted. " + capacity + " spaces remaining.");
+			status.setText("Crate Inserted. " + getSpaceRemaining() + " spaces remaining.");
 			} else
 			{
 				status.setText("The machine is full");
 			}
 		} else if (e.getSource().equals(slot4)) {
-			if (capacity != 0){
+			if (myCustomerPanel.getNumberOfItems()<=myCustomerPanel.getCapacity()){
 			myCustomerPanel.itemReceived(4);
-			capacity--;
-			status.setText("Paper Bag Inserted. " + capacity + " spaces remaining.");
+			status.setText("Paper Bag Inserted. " + getSpaceRemaining() + " spaces remaining.");
 			} else
 			{
 				status.setText("The machine is full");

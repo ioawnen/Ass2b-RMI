@@ -40,6 +40,9 @@ public class CustomerPanel {
 	public int getNumberOfItems() { 
 		return receiver.getNumberOfItems(); 
 	}
+	public int getCapacity() {
+		return receiver.getCapacity();
+	}
 	public String getSummaryText() { 
 		return receiver.getSummaryText(); 
 	}
