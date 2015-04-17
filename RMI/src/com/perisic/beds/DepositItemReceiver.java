@@ -104,6 +104,11 @@ public class DepositItemReceiver {
 		return summ.summary();
 	}
 	public String getReceiptText() {
-		return theReceiptBasis.computeSum();
+		if(theReceiptBasis==null){  //If receipt is empty
+			return "You have not added anything to the machine.";
+		} 
+		else {
+			return theReceiptBasis.computeSum();
+		}
 	}
-	}
+}

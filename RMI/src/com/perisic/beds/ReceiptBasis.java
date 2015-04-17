@@ -31,7 +31,7 @@ public class ReceiptBasis {
 			
 		}
 		receipt = receipt + "Total: "+sum; 
-		myItems = null;
+		myItems.clear();
 		return receipt;  
 	}
 
