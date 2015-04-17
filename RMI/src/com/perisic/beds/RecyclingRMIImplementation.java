@@ -23,7 +23,7 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	void setCustomerPanel(CustomerPanel panel_in) { 
 		myCustomerPanel = panel_in; 
 	}
-	String storedPasswd = "bla78"; 
+	String storedPasswd = Messages.getString("RecyclingRMIImplementation.password");  //$NON-NLS-1$
 	private String storedCookie = null; 
 	/**
 	 * This method returns a random cookie if passwd is the as the
@@ -34,10 +34,10 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	 */
 	public String enterPassword(String passwd) { 
 		if( passwd.equals(storedPasswd)) { 
-			storedCookie = "U"+Math.random();
+			storedCookie = "U"+Math.random(); //$NON-NLS-1$
 			return storedCookie; 
 		}
-		return "#noPassword#"; 
+		return "#noPassword#";  //$NON-NLS-1$
 	}
 	/**
 	 * returns the number of items entered into the recycling machine
@@ -56,7 +56,7 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	public int getNumberOfItemsInMachine(String sessionCookie) { 
 		if( storedCookie == null ) { 
 			return -1; 
-		} else if ( sessionCookie.equals("#noPassword#")) { 
+		} else if ( sessionCookie.equals("#noPassword#")) {  //$NON-NLS-1$
 			return -2; 
 		} else if( sessionCookie.equals(storedCookie) ) { 
 			if( myCustomerPanel == null ) { 
@@ -72,7 +72,7 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	public int testButton(String sessionCookie, int butNum) {
 		if(storedCookie==null) {
 			return -1;
-		} else if(sessionCookie.equals("#noPassword#")) {
+		} else if(sessionCookie.equals("#noPassword#")) { //$NON-NLS-1$
 			return -2;
 		} else if(sessionCookie.equals(storedCookie)) {
 			//DO THE BUTTON PRESS
@@ -85,5 +85,23 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	}
 	public String getFeedback(String sessionCookie) {
 		return myCustomerPanel.getFeedback();
+	}
+	public String getSummary(String sessionCookie) {
+		return myCustomerPanel.getSummaryText();
+	}
+	public String getReceipt(String sessionCookie) {
+		return myCustomerPanel.getReceiptText();
+	}
+	public int logout(String myCookie ) { 
+		if( storedCookie == null ) { 
+			return 0; 
+		} else if( myCookie.equals(storedCookie)) { 
+			storedCookie = null;  
+			return 1; 
+		} 
+		else { 
+			return -1; 
+		}
+		
 	}
 }

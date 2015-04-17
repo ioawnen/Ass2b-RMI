@@ -12,6 +12,12 @@ public interface RecyclingRMI extends Remote {
 	public int testButton(String sessionCookie, int butNum) throws RemoteException;
  
 	public String getFeedback(String sessionCookie) throws RemoteException;
+	
+	public String getSummary(String sessionCookie) throws RemoteException;
+	
+	public String getReceipt(String sessionCookie) throws RemoteException;
+	
+	public int logout(String sessionCookie) throws RemoteException;
    
 } 
 

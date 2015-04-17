@@ -56,6 +56,7 @@ public class DepositItemReceiver {
 		if ((summ.totalI < capacity)){  //if there is room left
 			theReceiptBasis.addItem(item); //added to summary and receipt
 			summ.addItem(item);
+			printer.print("Added "+item.getName());
 			items++;
 		} else {  //if machine is full
 			String str = "The machine cannot hold any more items";

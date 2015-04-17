@@ -14,60 +14,15 @@ import javax.swing.*;
 
 import com.perisic.beds.CustomerPanel;
 
-/**
- * A Simple Graphical User Interface for the Recycling Machine. This 
- * also doubles as a server that allows remotely to check the number
- * of items after successful authentication. 
- * @author Marc Conrad
- *
- */
+
 public class RecyclingGUI extends JFrame implements ActionListener  {
 	
-	String storedPasswd = "bla78"; 
-	private String storedCookie = null; 
+	
+	
 	public static boolean green = false; //initially text is pink, not green
 	CustomerPanel myCustomerPanel = new CustomerPanel( new Display());  //display window constructed
 	private ArrayList<String> feedbackList = new ArrayList<String>();
-	/**
-	 * This method returns a random cookie if passwd is the as the
-	 * stored password in the system. If the password doesn't match 
-	 * the stored password it returns the string #noPassword# 
-	 * @param passwd the password used for authentication. 
-	 * @return
-	 */
-	public String enterPassword(String passwd) { 
-		if( passwd.equals(storedPasswd)) { 
-			storedCookie = "U"+Math.random();
-			return storedCookie; 
-		}
-		return "#noPassword#"; 
-	}
-	/**
-	 * returns the number of items entered into the recycling machine
-	 * since it's existence. If the cookie matches the one generated
-	 * after a successful login the number of items is returned. Otherwise 
-	 * a negative number as error code is returned as follows
-	 * <ul>
-	 * <li> -1: the method has been called without a prior attempt of authentication
-	 * <li> -2: attempt to call this method with the #noPassword# token.
-	 * <li> -3: any other error.
-	 * </ul>
-	 * @param sessionCookie a string used for authentication.
-	 * @return
-	 */
 	
-	public int getNumberOfItemsInMachine(String sessionCookie) { 
-		if( storedCookie == null ) { 
-			return -1; 
-		} else if ( sessionCookie.equals("#noPassword#")) { 
-			return -2; 
-		} else if( sessionCookie.equals(storedCookie) ) { 
-			int numberOfItems = myCustomerPanel.getNumberOfItems();
-			return numberOfItems; 
-		} else { 
-			return -3; 
-		}
-	}
 	
 	public int getSpaceRemaining() {
 		int items = myCustomerPanel.getNumberOfItems();
@@ -146,6 +101,7 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 	JButton feedback = new JButton("Feedback");
 	JLabel status = new JLabel(" ",SwingConstants.CENTER); //status 
 	int capacity = 15;
+	
 	 
 	 
 	/**
@@ -198,6 +154,12 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 		printer.addActionListener(this);
 		summary.addActionListener(this);
 		feedback.addActionListener(this);
+		
+		
+		slot1.setBackground(Color.green);
+		slot2.setBackground(Color.green);
+		slot3.setBackground(Color.green);
+		slot4.setBackground(Color.green);
 		
 		
 		

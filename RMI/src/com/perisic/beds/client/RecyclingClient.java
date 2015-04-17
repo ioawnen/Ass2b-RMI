@@ -73,7 +73,7 @@ public class RecyclingClient {
 				20, 20));
 		jplContentPane.add(jlbPassword, BorderLayout.WEST);
 		jplContentPane.add(jpwName, BorderLayout.CENTER);
-		jplContentPane.setBackground(Color.RED); 
+		//jplContentPane.setBackground(Color.PINK); 
 		frame.setContentPane(jplContentPane);
 		frame.addWindowListener(new WindowAdapter() {
 
@@ -88,7 +88,7 @@ public class RecyclingClient {
 	private static String emulateButtonPress(String sessionCookie, int butNum) {
 		try { 
 			String result = ""+rc.testButton(sessionCookie, butNum); 
-			System.out.println("The result is: "+result ); 					
+			//System.out.println("The result is: "+result ); 					
 			//outputField.setText(result); 
 			return result;
 
@@ -137,12 +137,28 @@ public class RecyclingClient {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("RECEIPT BUTTON");
 				//DO THINGS HERE
+				try { 
+					String result = ""+rc.getReceipt(sessionCookie); 
+					System.out.println("The result is: "+result ); 					
+					outputField.setText(result); 
+
+				} catch (Exception exception) {
+					System.err.println("JavaClient: " + exception);
+				}
 			}
 		});
 		summary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("SUMMARY BUTTON");
 				//DO THINGS HERE
+				try { 
+					String result = ""+rc.getSummary(sessionCookie); 
+					System.out.println("The result is: "+result ); 					
+					outputField.setText(result); 
+
+				} catch (Exception exception) {
+					System.err.println("JavaClient: " + exception);
+				}
 			}
 		});
 		feedback.addActionListener(new ActionListener() {
@@ -190,6 +206,22 @@ public class RecyclingClient {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("LOGOUT BUTTON");
 				//DO THINGS HERE
+				String result = "-2";
+				try { 
+					result = ""+rc.logout(sessionCookie); 
+					System.out.println("The result is: "+result ); 					
+					outputField.setText(result); 
+
+				} catch (Exception exception) {
+					System.err.println("JavaClient: " + exception);
+				}
+				if(result.equals("1")) {
+				frame.dispose();	
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Error!\n"+result);
+				}
+				
 			}
 		});
 		
@@ -276,13 +308,13 @@ public class RecyclingClient {
 		mach2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("MACHINE 2 BUTTON");
-				connectServer("rmi://localhost/RecyclingService");
+				connectServer("rmi://10.1.27.192/RecyclingService");
 			}
 		});
 		mach3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("MACHINE 3 BUTTON");
-				connectServer("rmi://localhost/RecyclingService");
+				connectServer("rmi://10.1.27.146/RecyclingService");
 			}
 		});
 		mach4.addActionListener(new ActionListener() {
