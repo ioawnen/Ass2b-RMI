@@ -222,7 +222,7 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 			reg.rebind("RecyclingService",c);
 			System.out.println("Starting Service. Welcome to the Recycling World of RMI!");
 	     } catch (Exception e) {
-	       System.out.println("Trouble: " + e);
+	       System.err.println("Trouble: " + e);
 	     }
 		
 	}

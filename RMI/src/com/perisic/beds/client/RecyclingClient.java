@@ -85,6 +85,19 @@ public class RecyclingClient {
 		frame.setVisible(true);
 	}
 	
+	private static String emulateButtonPress(String sessionCookie, int butNum) {
+		try { 
+			String result = ""+rc.testButton(sessionCookie, butNum); 
+			System.out.println("The result is: "+result ); 					
+			//outputField.setText(result); 
+			return result;
+
+		} catch (Exception exception) {
+			System.err.println("JavaClient: " + exception);
+			return null;
+		}
+	}
+	
 	
 	/**
 	 * Launches the main GUI that retrieves the number of items
@@ -141,25 +154,28 @@ public class RecyclingClient {
 		slot1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("SLOT 1 BUTTON");
-				//DO THINGS HERE
+				outputField.setText(emulateButtonPress(sessionCookie, 1));
 			}
 		});
 		slot2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("SLOT 2 BUTTON");
 				//DO THINGS HERE
+				outputField.setText(emulateButtonPress(sessionCookie, 2));
 			}
 		});
 		slot3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("SLOT 3 BUTTON");
 				//DO THINGS HERE
+				outputField.setText(emulateButtonPress(sessionCookie, 3));
 			}
 		});
 		slot4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("SLOT 4 BUTTON");
 				//DO THINGS HERE
+				outputField.setText(emulateButtonPress(sessionCookie, 4));
 			}
 		});
 		logout.addActionListener(new ActionListener() {

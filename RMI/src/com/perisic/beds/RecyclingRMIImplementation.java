@@ -76,21 +76,9 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 			return -2;
 		} else if(sessionCookie.equals(storedCookie)) {
 			//DO THE BUTTON PRESS
-			
-			switch(butNum) {
-			case 1: 	//DO THE THING	
-						break;
-			case 2: 	//DO THE THING
-						break;
-			case 3: 	//DO THE THING
-						break;
-			case 4: 	//DO THE THING
-						break;
-					
-			default: 	return -4; //if out of range
-			}
-
+			myCustomerPanel.itemReceived(butNum);
 			return 1;
+
 		} else {
 			return -3;
 		}
