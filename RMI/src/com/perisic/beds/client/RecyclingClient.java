@@ -26,9 +26,7 @@ import javax.swing.JTextArea;
 
 import com.perisic.beds.RecyclingRMI;
 /**
- * Example of a Recycling Machine client. The client resides in the
- * Head Quarter and allows to check the number of items in the remote
- * recycling machine after successful authentication.
+ * This is the machine located within the company headquarters.
  * @author staff
  *
  */
@@ -37,12 +35,10 @@ public class RecyclingClient {
 	private static RecyclingRMI rc; 
 
 	/**
-	 * Launches a request for a password. When the password is entered
-	 * a request to server is made and - if successful - a cookie is
-	 * returned and the main GUI is launched. 
+	 * If the password is correct, log in is granted and a cookie is returned.
 	 */
 	
-	public static void setSessionCookie() { //Password input (for some reason)
+	public static void setSessionCookie() { 
 
 		final JFrame frame = new JFrame("HQ - Authenticate");
 		JLabel jlbPassword = new JLabel("Enter your password: ");
@@ -75,7 +71,7 @@ public class RecyclingClient {
 				20, 20));
 		jplContentPane.add(jlbPassword, BorderLayout.WEST);
 		jplContentPane.add(jpwName, BorderLayout.CENTER);
-		//jplContentPane.setBackground(Color.PINK); 
+ 
 		frame.setContentPane(jplContentPane);
 		frame.addWindowListener(new WindowAdapter() {
 
@@ -86,7 +82,12 @@ public class RecyclingClient {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
+	/**
+	 * Used for remote testing; simulates buttons on Recycling machine
+	 * @param sessionCookie
+	 * @param butNum
+	 * @return
+	 */
 	private static String emulateButtonPress(String sessionCookie, int butNum) {
 		try { 
 			String result = ""+rc.testButton(sessionCookie, butNum); 
@@ -102,8 +103,7 @@ public class RecyclingClient {
 	
 	
 	/**
-	 * Launches the main GUI that retrieves the number of items
-	 * from the remote machine. 
+	 * Starts GUI, delcares GUI elements 
 	 */
 	public static void startGUI(final String sessionCookie) { 
 		final JFrame frame = new JFrame("HQ - GUI");
@@ -287,8 +287,10 @@ public class RecyclingClient {
 			JOptionPane.showMessageDialog(frame, "No Server!\n"+exception);
 		}
 	}
-		
-	public static void machineSelect() { //First Window
+		/**
+		 * Defines how HQ connects to external machines, with IP addreeses.
+		 */
+	public static void machineSelect() {
 		
 		final JFrame frame = new JFrame("HQ - Machine Select");
 				
@@ -371,14 +373,13 @@ public class RecyclingClient {
 	
 	
 	/** 
-	 * Starts up the program and will connect to localhost for authentication
-	 * and retrieval. 
+	 * Starts up HQ program, launches GUI for selecting machines. 
 	 * @param args
 	 */
 
 	public static void main (String [] args) {
 		machineSelect();
-		//startGUI("HA"); //For debug only!
+		
 	}
 }
 

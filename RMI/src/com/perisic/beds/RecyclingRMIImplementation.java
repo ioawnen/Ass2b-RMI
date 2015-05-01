@@ -30,7 +30,7 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	 * Checks if the password matches the password stored in the code. 
 	 * If it does, a cookie is generated and returned.
 	 * If not, it returns #noPassword# 
-	 * @param passwd the password used for authentication. 
+	 * @param passwd 
 	 * @return
 	 */
 	public String enterPassword(String passwd) { 
