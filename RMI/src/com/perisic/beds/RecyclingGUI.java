@@ -22,7 +22,10 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 	public static boolean green = false; //initially text is pink, not green
 	CustomerPanel myCustomerPanel = new CustomerPanel( new Display());  //display window constructed
 	private ArrayList<String> feedbackList = new ArrayList<String>();
-	
+	/**
+	 * Retrieves the amount of remaining space left in the machine.
+	 * @return result
+	 */
 	
 	public int getSpaceRemaining() {
 		int items = myCustomerPanel.getNumberOfItems();
@@ -91,6 +94,10 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 		}
 	}
 	
+	/**
+	 * GUI components
+	 */
+	
 	JButton slot1 = new JButton("Can"); 
 	JButton slot2 = new JButton("Bottle"); 
 	JButton slot3 = new JButton("Crate"); 
@@ -105,8 +112,7 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 	 
 	 
 	/**
-	 * Construction of the GUI. Buttons are added and intialized with an ActionListener
-	 * that directs the events into this object. 
+	 * Construction of the GUI. 
 	 */
 	public RecyclingGUI() {
 		super();
@@ -168,7 +174,7 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 	
 	}
 	/**
-	 * Where everything starts. 
+	 * Where the machine is started.
 	 * @param args
 	 */
 	public static void main(String [] args ) { 
@@ -189,6 +195,9 @@ public class RecyclingGUI extends JFrame implements ActionListener  {
 	     }
 		
 	}
+	/**
+	 * Changes the display from pink to green, and vice versa.
+	 */
 	public void changeDisplay(){
 		if (green==false){ //if the text is not set to green, sets to green
 			green = true;

@@ -26,9 +26,10 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 	String storedPasswd = Messages.getString("RecyclingRMIImplementation.password");  //$NON-NLS-1$
 	private String storedCookie = null; 
 	/**
-	 * This method returns a random cookie if passwd is the as the
-	 * stored password in the system. If the password doesn't match 
-	 * the stored password it returns the string #noPassword# 
+
+	 * Checks if the password matches the password stored in the code. 
+	 * If it does, a cookie is generated and returned.
+	 * If not, it returns #noPassword# 
 	 * @param passwd the password used for authentication. 
 	 * @return
 	 */
@@ -68,14 +69,15 @@ public class RecyclingRMIImplementation extends UnicastRemoteObject implements R
 			return -3; 
 		}
 	}
-	
+	/**
+	 * Used to test the machine by adding items remotely, only if the cookie is present. 
+	 */
 	public int testButton(String sessionCookie, int butNum) {
 		if(storedCookie==null) {
 			return -1;
 		} else if(sessionCookie.equals("#noPassword#")) { //$NON-NLS-1$
 			return -2;
 		} else if(sessionCookie.equals(storedCookie)) {
-			//DO THE BUTTON PRESS
 			myCustomerPanel.itemReceived(butNum);
 			return 1;
 

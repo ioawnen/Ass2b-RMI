@@ -137,8 +137,7 @@ public class RecyclingClient {
 		});
 		receipt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("RECEIPT BUTTON");
-				//DO THINGS HERE
+
 				try { 
 					String result = ""+rc.getReceipt(sessionCookie); 
 					System.out.println("The result is: "+result ); 					
@@ -151,8 +150,6 @@ public class RecyclingClient {
 		});
 		summary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("SUMMARY BUTTON");
-				//DO THINGS HERE
 				try { 
 					String result = ""+rc.getSummary(sessionCookie); 
 					System.out.println("The result is: "+result ); 					
@@ -165,8 +162,6 @@ public class RecyclingClient {
 		});
 		feedback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("FEEDBACK BUTTON");
-				//DO THINGS HERE
 				try { 
 					String result = ""+rc.getFeedback(sessionCookie); 
 					System.out.println("The result is: "+result ); 					
@@ -179,43 +174,33 @@ public class RecyclingClient {
 		});
 		slot1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("SLOT 1 BUTTON");
 				emulateButtonPress(sessionCookie, 1);
 				outputField.setText("Can Added");
 			}
 		});
 		slot2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("SLOT 2 BUTTON");
-				//DO THINGS HERE
 				emulateButtonPress(sessionCookie, 2);
 				outputField.setText("Bottle Added");
 			}
 		});
 		slot3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("SLOT 3 BUTTON");
-				//DO THINGS HERE
 				emulateButtonPress(sessionCookie, 3);
 				outputField.setText("Crate Added");
 			}
 		});
 		slot4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("SLOT 4 BUTTON");
-				//DO THINGS HERE
 				emulateButtonPress(sessionCookie, 4);
 				outputField.setText("Paper Bag Added");
 			}
 		});
 		logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println("LOGOUT BUTTON");
-				//DO THINGS HERE
 				String result = "-2";
 				try { 
-					result = ""+rc.logout(sessionCookie); 
-					System.out.println("The result is: "+result ); 					
+					result = ""+rc.logout(sessionCookie); 					
 					outputField.setText(result); 
 
 				} catch (Exception exception) {
